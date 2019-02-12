@@ -93,18 +93,22 @@ public class Commande implements Serializable {
         this.client = client;
     }
 
+    @JsonIgnore
     public List<Reception> getReceptions() {
         return receptions;
     }
 
+    @JsonSetter
     public void setReceptions(List<Reception> receptions) {
         this.receptions = receptions;
     }
 
+    @JsonIgnore
     public List<Paiement> getPaiements() {
         return paiements;
     }
 
+    @JsonSetter
     public void setPaiements(List<Paiement> paiements) {
         this.paiements = paiements;
     }

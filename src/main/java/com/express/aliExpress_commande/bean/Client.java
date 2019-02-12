@@ -5,6 +5,8 @@
  */
 package com.express.aliExpress_commande.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -69,6 +71,16 @@ public class Client implements Serializable {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    @JsonIgnore
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    @JsonSetter
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     @Override

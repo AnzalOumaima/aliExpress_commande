@@ -10,6 +10,7 @@ import com.express.aliExpress_commande.bean.CommandeItem;
 import com.express.aliExpress_commande.dao.CommandeDao;
 import com.express.aliExpress_commande.service.CommandeItemService;
 import com.express.aliExpress_commande.service.CommandeService;
+import com.express.aliExpress_commande.service.ReceptionService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class CommandeServiceImpl implements CommandeService {
     private CommandeDao commandeDao;
     @Autowired
     private CommandeItemService commandeItemService;
+    @Autowired
+    private ReceptionService receptionService;
 
     @Override
     public Commande findByReference(String reference) {
@@ -45,7 +48,6 @@ public class CommandeServiceImpl implements CommandeService {
 //            return 1;
 //        }
 //    }
-
     @Override
     public int creer(Commande commande) {
         Commande c = findByReference(commande.getReference());
@@ -80,6 +82,23 @@ public class CommandeServiceImpl implements CommandeService {
         }
     }
 
+    @Override
+    public int delete(Commande commande) {
+        Commande c = findByReference(commande.getReference());
+        if (c == null) {
+            return -1;
+        } else {
+            int res = commandeItemService.deleteByCommandeReference(commande.getReference());
+            int rest = receptionService.deleteByCommandeReference(commande.getReference());
+            if (res < 0) {
+                return -2;
+            } else {
+                commandeDao.delete(commande);
+                return 1;
+            }
+        }
+    }
+
     public CommandeDao getCommandeDao() {
         return commandeDao;
     }
@@ -94,6 +113,14 @@ public class CommandeServiceImpl implements CommandeService {
 
     public void setCommandeItemService(CommandeItemService commandeItemService) {
         this.commandeItemService = commandeItemService;
+    }
+
+    public ReceptionService getReceptionService() {
+        return receptionService;
+    }
+
+    public void setReceptionService(ReceptionService receptionService) {
+        this.receptionService = receptionService;
     }
 
 }

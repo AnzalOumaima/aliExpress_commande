@@ -5,7 +5,7 @@
  */
 package com.express.aliExpress_commande.dao;
 
-import com.express.aliExpress_commande.bean.CommandeItem;
+import com.express.aliExpress_commande.bean.ReceptionItem;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Repository;
  * @author Admin
  */
 @Repository
-public interface CommandeItemDao extends JpaRepository<CommandeItem, Long> {
+public interface ReceptionItemDao extends JpaRepository<ReceptionItem, Long> {
 
-    public List<CommandeItem> findByCommandeReference(String referenceCommande);
+    public List<ReceptionItem> findByReceptionReference(String referenceReception);
 
-    public int deleteByCommandeReference(String referenceCommande);
+    public int deleteByReceptionReference(String referenceReception);
 
-    public List<CommandeItem> findByReferenceProduit(String referenceProduit);
+    public List<ReceptionItem> findByReferenceProduit(String referenceProduit);
 
 }

@@ -5,6 +5,8 @@
  */
 package com.express.aliExpress_commande.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -76,10 +78,12 @@ public class Reception implements Serializable {
         this.commande = commande;
     }
 
+    @JsonIgnore
     public List<ReceptionItem> getReceptionItems() {
         return receptionItems;
     }
 
+    @JsonSetter
     public void setReceptionItems(List<ReceptionItem> receptionItems) {
         this.receptionItems = receptionItems;
     }

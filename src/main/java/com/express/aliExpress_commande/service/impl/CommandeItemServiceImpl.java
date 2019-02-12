@@ -32,6 +32,12 @@ public class CommandeItemServiceImpl implements CommandeItemService {
         commandeItemDao.save(item);
     }
 
+    @Override
+    public int deleteByCommandeReference(String referenceCommande) {
+        //List<CommandeItem> items=findByCommandeReference(referenceCommande);
+        return commandeItemDao.deleteByCommandeReference(referenceCommande);
+    }
+
     public CommandeItemDao getCommandeItemDao() {
         return commandeItemDao;
     }

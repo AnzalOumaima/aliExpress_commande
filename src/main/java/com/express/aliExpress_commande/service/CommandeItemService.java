@@ -16,8 +16,9 @@ public interface CommandeItemService {
 
     public List<CommandeItem> findByCommandeReference(String referenceCommande);
 
-   // public CommandeItem creer(String referenceProduit, long qte, double prix, String referenceCommande);
+    public int deleteByCommandeReference(String referenceCommande);
 
+    // public CommandeItem creer(String referenceProduit, long qte, double prix, String referenceCommande);
     public void creer(CommandeItem item);
 
 }

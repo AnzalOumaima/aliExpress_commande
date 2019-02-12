@@ -15,10 +15,11 @@ public interface CommandeService {
 
     public Commande findByReference(String reference);
 
-  //  public int payer(String reference, double montant);
-
+    //  public int payer(String reference, double montant);
     public int creer(Commande commande);
 
     public int save(Commande commande);
+
+    public int delete(Commande commande);
 
 }
